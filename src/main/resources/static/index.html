@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Lojo Complex Scheduler</title>
 </head>
 <body>
-$END$
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/jquery.cookie/jquery.cookie.js"></script>
+    <script src="js/index.js"></script>
+    <div id="cs-main-content-id"></div>
+    <form action="/logout" method="post" name="logout">
+        <input id="cs-csrf-input-id" type="hidden" name="_csrf" value="">
+        <button type="submit" name="logout" value="logout">Logout</button>
+    </form>
 </body>
 </html>

@@ -1,0 +1,27 @@
+{
+  "name": "complexscheduler",
+  "version": "1.0.0",
+  "description": "To schedule complex shifts such as for doctors",
+  "main": "js/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "jquery.cookie": "^1.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lojones/lojo-complex-scheduler.git"
+  },
+  "author": "Login Jones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lojones/lojo-complex-scheduler/issues"
+  },
+  "homepage": "https://github.com/lojones/lojo-complex-scheduler#readme"
+}
