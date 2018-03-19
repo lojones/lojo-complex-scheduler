@@ -13,4 +13,8 @@ $(document).ready(function () {
 
     $("#cs-sidebar-id").csSideBar();
 
+    $("#cs-main-content-id").csSchedule();
+
+
+
 });

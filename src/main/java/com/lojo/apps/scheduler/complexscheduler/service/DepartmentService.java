@@ -5,17 +5,44 @@ import com.lojo.apps.scheduler.complexscheduler.model.Employee;
 import com.lojo.apps.scheduler.complexscheduler.model.Schedule;
 import com.lojo.apps.scheduler.complexscheduler.model.exception.DuplicateException;
 import com.lojo.apps.scheduler.complexscheduler.model.exception.NotFoundException;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Set;
+import javax.annotation.PostConstruct;
+import java.util.*;
 
 @Slf4j
 @Service
+@Getter
 public class DepartmentService {
 
     HashMap<Integer, Department> departments=new HashMap();
+
+    @PostConstruct
+    public void mockData() {
+        try {
+            this.createNewDepartment("Emergency","For 24 hour emergency care serving the greater Brampton area", "Brampton Civic Hospital");
+            this.createNewDepartment("Call Center","Bell Helpdesk", "Bell Canada Inc.");
+        } catch (DuplicateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createNewDepartment(String departmentName, String departmentDescription, String companyName) throws DuplicateException {
+
+        synchronized (departments) {
+            Set<Integer> keys = departments.keySet();
+            Integer newId=1;
+            if (keys.size()>0) {
+                Integer maxId=Collections.max(keys);
+                newId=maxId+1;
+            }
+
+            createNewDepartment(newId,departmentName,departmentDescription,companyName);
+        }
+
+    }
 
     public void createNewDepartment(Integer id, String departmentName, String departmentDescription, String companyName) throws DuplicateException {
 

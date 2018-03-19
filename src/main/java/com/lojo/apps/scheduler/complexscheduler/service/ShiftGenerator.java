@@ -4,8 +4,7 @@ import com.lojo.apps.scheduler.complexscheduler.model.Schedule;
 import com.lojo.apps.scheduler.complexscheduler.model.ShiftSeries;
 import com.lojo.apps.scheduler.complexscheduler.model.ShiftInstance;
 import lombok.extern.slf4j.Slf4j;
-import org.joda.time.DateTimeConstants;
-import org.joda.time.Instant;
+import org.joda.time.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -24,9 +23,9 @@ public class ShiftGenerator {
 
                 Integer shiftLengthHours = shiftSeries.getShiftLengthHours();
 
-                Instant shiftStart = shiftSeries.getStart();
-                Instant shiftEnd = shiftStart.plus(DateTimeConstants.MILLIS_PER_HOUR * shiftLengthHours);
-
+                LocalDateTime shiftStart = shiftSeries.getStart();
+                LocalDateTime shiftEnd = shiftStart.plus(new Duration(DateTimeConstants.MILLIS_PER_HOUR * shiftLengthHours));
+                ReadableDuration a=new Duration(null);
                 while (shiftEnd.isBefore(shiftSeries.getEnd())) {
                     ShiftInstance shiftInstance = new ShiftInstance();
                     shiftInstance.setStart(shiftStart);
@@ -36,7 +35,7 @@ public class ShiftGenerator {
                     schedule.getShifts().put(shiftStart,shiftInstance);
 
                     shiftStart=shiftEnd;
-                    shiftEnd=shiftStart.plus(DateTimeConstants.MILLIS_PER_HOUR * shiftLengthHours);
+                    shiftEnd=shiftStart.plus(new Duration(DateTimeConstants.MILLIS_PER_HOUR * shiftLengthHours));
                 }
 
 

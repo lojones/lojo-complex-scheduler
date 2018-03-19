@@ -9,13 +9,15 @@ import java.util.Map;
 @Data
 public class ShiftSeries {
 
+    String name;
+
     Boolean doesRecur;
     Boolean instantiated;
 
     Integer shiftLengthHours;
 
-    Instant start;
-    Instant end;
+    LocalDateTime start;
+    LocalDateTime end;
 
     Map<JobRole,Integer> numSlots = new HashMap<>();
 

@@ -1,0 +1,107 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background: white;
+    margin: 0;
+    padding: 0;
+}
+
+.cs-login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.cs-login-username-container {
+    padding: 10px;
+
+}
+
+.cs-login-username-label {
+    font-size:x-small;
+    padding: 5px;
+    color: darkblue;
+}
+
+.cs-login-pwd-container {
+    padding: 10px;
+}
+
+.cs-login-pwd-label {
+    font-size:x-small;
+    padding: 5px;
+    color: darkblue;
+}
+
+.cs-login-btn {
+    width: 100px;
+    float: right;
+    margin-top: 20px;
+    border-color: lightblue;
+    padding: 10px;
+}
+
+.cs-main-content {
+    margin-left: 200px;
+}
+
+.sidebar{
+    will-change: min-height;
+    width: fit-content;
+}
+
+.sidebar__inner{
+    transform: translate(0, 0); /* For browsers don't support translate3d. */
+    transform: translate3d(0, 0, 0);
+    will-change: position, transform;
+    z-index: 0;
+    min-width: 200px;
+
+}
+
+.cs-sidebar-wrapper {
+    width: fit-content;
+    background: cornflowerblue;
+    padding: 20px;
+    margin-left: 5px;
+}
+
+.cs-boxshadow {
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.69);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.69);
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.69);
+}
+
+.cs-linkish-white {
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
+}
+
+.cs-linkish-black {
+    cursor:pointer;
+    color:black;
+    text-decoration:underline;
+}
+
+.cs-linkish-blue {
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+#cs-schedule-content-id {
+    z-index: 99;
+}
+
+.cs-debug {
+    border-style: dotted;
+    border-width: 1px;
+    padding: 6px;
+    margin: 4px;
+}
+
+.cs-h1 {
+    font-size: x-large;
+}

@@ -4,7 +4,7 @@ import com.lojo.apps.scheduler.complexscheduler.model.Schedule;
 import com.lojo.apps.scheduler.complexscheduler.model.ShiftInstance;
 import com.lojo.apps.scheduler.complexscheduler.model.ShiftSeries;
 import lombok.extern.slf4j.Slf4j;
-import org.joda.time.Instant;
+import org.joda.time.*;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
@@ -27,17 +27,19 @@ public class ShiftGeneratorTest {
         Schedule schedule =  new Schedule();
         schedule.setName("Test Schedule");
 
-        Instant j1 = Instant.parse("2020-01-01 00:00:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss"));
-        Instant f1 = Instant.parse("2020-02-01 00:00:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss"));
+        DateTimeZone.setDefault(DateTimeZone.forTimeZone(TimeZone.getTimeZone("America/Toronto")));
 
-        schedule.setStart(j1);
-        schedule.setEnd(f1);
+        DateTimeFormatter dtf=DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+
+        LocalDateTime jan=dtf.parseLocalDateTime("2020-01-01 00:00:00");
+        LocalDateTime feb=dtf.parseLocalDateTime("2020-02-01 00:00:00");
+
 
         ShiftSeries shiftSeries = new ShiftSeries();
         shiftSeries.setDoesRecur(true);
         shiftSeries.setShiftLengthHours(8);
-        shiftSeries.setStart(j1);
-        shiftSeries.setEnd(f1);
+        shiftSeries.setStart(jan);
+        shiftSeries.setEnd(feb);
         shiftSeries.setInstantiated(false);
 
         Set<ShiftSeries> shiftSeriesSet = new HashSet<>();
@@ -47,12 +49,20 @@ public class ShiftGeneratorTest {
 
         Schedule s = shiftGenerator.generateShifts(schedule);
 
-        List<Instant> keys=new ArrayList<>(s.getShifts().keySet());
+        List<LocalDateTime> keys=new ArrayList<>(s.getShifts().keySet());
         Collections.sort(keys);
 
-        for (Instant key : keys) {
+        LocalDateTime expectedStart =new LocalDateTime(dtf.parseLocalDateTime("2020-01-01 00:00:00"));
+        LocalDateTime expectedEnd =new LocalDateTime(dtf.parseLocalDateTime("2020-01-01 08:00:00"));
+
+        for (LocalDateTime key : keys) {
             ShiftInstance si=s.getShifts().get(key);
-            log.info("Shift {} - {} {} {}",key,si.getStart(), si.getEnd());
+            log.info("Shift[{}] - ({})----({}), testing...",key,si.getStart(), si.getEnd());
+            assertEquals(si.getStart(),expectedStart);
+            assertEquals(si.getEnd(),expectedEnd);
+            expectedStart=expectedEnd;
+            expectedEnd=expectedEnd.plus(new Duration(8 * DateTimeConstants.MILLIS_PER_HOUR));
+            log.info("...actual=expected");
         }
 
 

@@ -1,16 +1,8 @@
 {
   "name": "complexscheduler",
   "version": "1.0.0",
-  "description": "To schedule complex shifts such as for doctors",
-  "main": "js/index.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "dependencies": {
-    "jquery": "^3.3.1",
-    "jquery.cookie": "^1.4.1"
-  },
-  "devDependencies": {},
+  "description": "To create schedules from very complex rules",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/lojones/lojo-complex-scheduler/issues"
   },
-  "homepage": "https://github.com/lojones/lojo-complex-scheduler#readme"
+  "homepage": "https://github.com/lojones/lojo-complex-scheduler#readme",
+  "dependencies": {
+    "css-element-queries": "^1.0.2",
+    "jquery": "^3.3.1",
+    "jquery-ui-dist": "^1.12.1",
+    "jquery.cookie": "^1.4.1",
+    "notifyjs-browser": "^0.4.2",
+    "sticky-sidebar": "^3.3.1"
+  }
 }

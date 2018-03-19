@@ -1,0 +1,36 @@
+.cs-topbar-wrapper {
+    background: midnightblue;
+    height: 20px;
+    margin-bottom: 20px;
+    color: white;
+    padding: 10px;
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.69);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.69);
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.69);
+
+}
+
+.cs-topbar-title {
+    float: left;
+}
+
+.cs-topbar-logout {
+    float: right;
+    margin-right: 20px;
+    border-color: white;
+    background: lightblue;
+    border: none;
+
+}
+
+.top-bar-logout-label {
+    float: right;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#cs-topbar-username-id {
+    float: right;
+    margin-left: 5px;
+    margin-right: 5px;
+}

@@ -1,6 +1,7 @@
 package com.lojo.apps.scheduler.complexscheduler.model;
 
 import org.joda.time.Instant;
+import org.joda.time.LocalDateTime;
 
 public class SchedulingCondition {
     SchedulingConditionTypeEnum type;
@@ -8,8 +9,8 @@ public class SchedulingCondition {
     Boolean isOneTime;
     RecurranceEnum recurranceType;
     Integer recurrancePeriod;
-    Instant specificStart;
-    Instant specificEnd;
+    LocalDateTime specificStart;
+    LocalDateTime specificEnd;
 
 
 
